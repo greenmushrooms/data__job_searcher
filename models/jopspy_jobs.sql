@@ -42,7 +42,7 @@ SELECT id,
        work_from_home_type
 FROM {{ source('jobspy','import_jobs') }}
 {% if is_incremental() %}
-WHERE run_name = '{{ var("run_name") }}'
+    WHERE run_name = '{{ var("run_name") }}'
 {% else %}
-WHERE 1=0
+    WHERE 1=0
 {% endif %}
