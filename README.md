@@ -5,6 +5,7 @@ Welcome to your new dbt project!
 Try running the following commands:
 - dbt run
 - dbt test
+export $(grep -v '^#' .env | xargs)
 dbt run --vars '{"run_name": "graceful-nightingale"}'
 
 ### Resources:
