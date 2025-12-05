@@ -2,7 +2,7 @@ data__job_searcher:
   outputs:
     dev:
       dbname: job_searcher
-      host: localhost
+      host: "{{ env_var('DB_HOST') }}"
       pass: "{{ env_var('DB_PASSWORD') }}"
       port: 5432
       schema: public
