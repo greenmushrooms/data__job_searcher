@@ -6,7 +6,7 @@
     )
 }}
 
-SELECT
+SELECT DISTINCT ON (id)
     sys_profile,
     id,
     site,
@@ -41,10 +41,12 @@ SELECT
     company_rating,
     company_reviews_count,
     vacancy_count,
-    work_from_home_type
+    work_from_home_type,
+    sys_country
 FROM {{ source('jobspy','import_jobs') }}
 {% if is_incremental() %}
     WHERE sys_run_name = '{{ var("run_name") }}'
 {% else %}
     WHERE 1=0
 {% endif %}
+ORDER BY id
